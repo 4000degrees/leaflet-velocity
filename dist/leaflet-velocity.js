@@ -46,6 +46,9 @@ L.CanvasLayer = (L.Layer ? L.Layer : L.Class).extend({
     var topLeft = this._map.containerPointToLayerPoint([0, 0]);
 
     L.DomUtil.setPosition(this._canvas, topLeft);
+
+    this._canvas.getContext("2d").clearRect(0, 0, 3000, 3000);
+
     this.drawLayer();
   },
   //-------------------------------------------------------------
@@ -382,10 +385,10 @@ L.VelocityLayer = (L.Layer ? L.Layer : L.Class).extend({
       return;
     }
 
-    if (this._timer) clearTimeout(self._timer);
-    this._timer = setTimeout(function () {
-      self._startWindy();
-    }, 750); // showing velocity is delayed
+    if (this._timer) clearTimeout(self._timer); // this._timer = setTimeout(function() {
+
+    self._startWindy(); // }, 750); // showing velocity is delayed
+
   },
   _startWindy: function _startWindy() {
     var bounds = this._map.getBounds();
@@ -407,17 +410,11 @@ L.VelocityLayer = (L.Layer ? L.Layer : L.Class).extend({
 
     this._canvasLayer._canvas.classList.add("velocity-overlay");
 
-    this.onDrawLayer();
-
-    this._map.on("dragstart", self._windy.stop);
-
-    this._map.on("dragend", self._clearAndRestart);
-
-    this._map.on("zoomstart", self._windy.stop);
-
-    this._map.on("zoomend", self._clearAndRestart);
-
-    this._map.on("resize", self._clearWind);
+    this.onDrawLayer(); // this._map.on("dragstart", self._windy.stop);
+    // this._map.on("dragend", self._clearAndRestart);
+    // this._map.on("zoomstart", self._windy.stop);
+    // this._map.on("zoomend", self._clearAndRestart);
+    // this._map.on("resize", self._clearWind);
 
     this._initMouseHandler(false);
   },

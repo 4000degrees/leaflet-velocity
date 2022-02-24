@@ -94,9 +94,9 @@ L.VelocityLayer = (L.Layer ? L.Layer : L.Class).extend({
 
     if (this._timer) clearTimeout(self._timer);
 
-    this._timer = setTimeout(function() {
+    // this._timer = setTimeout(function() {
       self._startWindy();
-    }, 750); // showing velocity is delayed
+    // }, 750); // showing velocity is delayed
   },
 
   _startWindy: function() {
@@ -131,11 +131,11 @@ L.VelocityLayer = (L.Layer ? L.Layer : L.Class).extend({
     this._canvasLayer._canvas.classList.add("velocity-overlay");
     this.onDrawLayer();
 
-    this._map.on("dragstart", self._windy.stop);
-    this._map.on("dragend", self._clearAndRestart);
-    this._map.on("zoomstart", self._windy.stop);
-    this._map.on("zoomend", self._clearAndRestart);
-    this._map.on("resize", self._clearWind);
+    // this._map.on("dragstart", self._windy.stop);
+    // this._map.on("dragend", self._clearAndRestart);
+    // this._map.on("zoomstart", self._windy.stop);
+    // this._map.on("zoomend", self._clearAndRestart);
+    // this._map.on("resize", self._clearWind);
 
     this._initMouseHandler(false);
   },
